@@ -10,39 +10,39 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomAuthEntryPoint customAuthEntryPoint;
-
-    @Value("${auth.root.user}")
-    private String user;
-
-    @Value("${auth.root.password}")
-    private String password;
-
-
-    public SecurityConfig(CustomAuthEntryPoint customAuthEntryPoint) {
-        this.customAuthEntryPoint = customAuthEntryPoint;
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and()
-                .httpBasic()
-                .authenticationEntryPoint(customAuthEntryPoint);
-    }
-
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser(user)
-                .password(passwordEncoder.encode(password))
-                .roles("ADMIN");
-    }
+//    private final CustomAuthEntryPoint customAuthEntryPoint;
+//
+//    @Value("${auth.root.user}")
+//    private String user;
+//
+//    @Value("${auth.root.password}")
+//    private String password;
+//
+//
+//    public SecurityConfig(CustomAuthEntryPoint customAuthEntryPoint) {
+//        this.customAuthEntryPoint = customAuthEntryPoint;
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeRequests().anyRequest().authenticated()
+//                .and()
+//                .httpBasic()
+//                .authenticationEntryPoint(customAuthEntryPoint);
+//    }
+//
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .withUser(user)
+//                .password(passwordEncoder.encode(password))
+//                .roles("ADMIN");
+//    }
 }

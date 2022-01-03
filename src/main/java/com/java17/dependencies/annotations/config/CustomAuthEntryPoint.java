@@ -12,24 +12,24 @@ import java.io.PrintWriter;
 import static java.lang.String.format;
 import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
-@Component
+//@Component
 public class CustomAuthEntryPoint extends BasicAuthenticationEntryPoint {
 
-    @Override
-    public void commence(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            AuthenticationException authException)
-            throws IOException {
-        response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName() + "");
-        response.setStatus(SC_UNAUTHORIZED);
-        final PrintWriter writer = response.getWriter();
-        writer.println(format("HTTP Status 401 - %s", authException.getMessage()));
-    }
-
-    @Override
-    public void afterPropertiesSet() {
-        setRealmName("JDeveloper");
-        super.afterPropertiesSet();
-    }
+//    @Override
+//    public void commence(
+//            HttpServletRequest request,
+//            HttpServletResponse response,
+//            AuthenticationException authException)
+//            throws IOException {
+//        response.addHeader("WWW-Authenticate", "Basic realm=" + getRealmName() + "");
+//        response.setStatus(SC_UNAUTHORIZED);
+//        final PrintWriter writer = response.getWriter();
+//        writer.println(format("HTTP Status 401 - %s", authException.getMessage()));
+//    }
+//
+//    @Override
+//    public void afterPropertiesSet() {
+//        setRealmName("JDeveloper");
+//        super.afterPropertiesSet();
+//    }
 }
