@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.java17</groupId>
-	<artifactId>dependencies</artifactId>
+	<artifactId>libraries</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<name>libraries</name>
 	<description>Custom libraries</description>
