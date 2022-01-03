@@ -25,6 +25,7 @@
 			<url>https://maven.pkg.github.com/Artur711/dependencies</url>
 		</repository>
 	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -120,5 +121,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
