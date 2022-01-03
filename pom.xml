@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.java17</groupId>
 	<artifactId>dependencies</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>dependencies</name>
 	<description>Custom libraries</description>
 	<properties>
