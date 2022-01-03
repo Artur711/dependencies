@@ -24,6 +24,14 @@
 			<url>https://maven.pkg.github.com/Artur711/dependencies</url>
 		</repository>
 	</distributionManagement>
+	<scm>
+		<connection>scm:git:git://github.com/Artur711/dependencies</connection>
+		<developerConnection>scm:git:https://github.com/Artur711/dependencies.git
+		</developerConnection>
+		<url>https://github.com/Artur711/dependencies</url>
+		<tag>dependencies</tag>
+	</scm>
+
 
 	<dependencies>
 		<dependency>
