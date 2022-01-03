@@ -20,6 +20,14 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Artur711 Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/Artur711/dependencies</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
