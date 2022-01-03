@@ -16,10 +16,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomAuthEntryPoint customAuthEntryPoint;
 
-    @Value("${app.root.user}")
+    @Value("${auth.root.user}")
     private String user;
 
-    @Value("${app.root.password}")
+    @Value("${auth.root.password}")
     private String password;
 
 
