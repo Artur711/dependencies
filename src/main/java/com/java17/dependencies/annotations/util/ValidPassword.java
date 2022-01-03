@@ -1,4 +1,4 @@
-package com.java17.libraries.annotations.util;
+package com.java17.dependencies.annotations.util;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

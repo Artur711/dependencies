@@ -1,4 +1,4 @@
-package com.java17.libraries.annotations.util;
+package com.java17.dependencies.annotations.util;
 
 import org.passay.CharacterRule;
 import org.passay.IllegalSequenceRule;

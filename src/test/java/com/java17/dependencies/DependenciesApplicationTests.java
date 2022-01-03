@@ -1,9 +1,7 @@
-package com.java17.libraries;
+package com.java17.dependencies;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class DependenciesApplicationTests {
 
 	@Test

@@ -1,4 +1,4 @@
-package com.java17.libraries.annotations.config;
+package com.java17.dependencies.annotations.config;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;

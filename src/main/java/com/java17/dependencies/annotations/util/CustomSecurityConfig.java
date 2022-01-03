@@ -1,6 +1,7 @@
-package com.java17.libraries.annotations.util;
+package com.java17.dependencies.annotations.util;
 
-import com.java17.libraries.annotations.config.SecurityConfig;
+import com.java17.dependencies.annotations.config.CustomAuthEntryPoint;
+import com.java17.dependencies.annotations.config.SecurityConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -10,6 +11,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Import({SecurityConfig.class})
+@Import({SecurityConfig.class, CustomAuthEntryPoint.class})
 public @interface CustomSecurityConfig {
 }
