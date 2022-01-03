@@ -1,4 +1,4 @@
-package configuration;
+package com.java17.dependencies.annotations.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,6 +1,6 @@
-package until;
+package com.java17.dependencies.annotations.util;
 
-import configuration.SecurityConfig;
+import com.java17.dependencies.annotations.config.SecurityConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
