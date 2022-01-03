@@ -1,0 +1,3 @@
+app.root:
+  user: ${security.user}
+  password: ${security.password}
