@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.java17</groupId>
 	<artifactId>dependencies</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>dependencies</name><description>Custom libraries</description>
 	<properties>
 		<java.version>17</java.version>
@@ -28,7 +28,7 @@
 		<developerConnection>scm:git:https://github.com/Artur711/dependencies.git
 		</developerConnection>
 		<url>https://github.com/Artur711/dependencies</url>
-		<tag>dependencies-0.0.3</tag>
+		<tag>dependencies</tag>
 	</scm>
 
 
