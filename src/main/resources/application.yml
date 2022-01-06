@@ -1,3 +1,7 @@
-auth.root:
-  user: ${security.user:default-user}
-  password: ${security.password:default-password}
+auth:
+  root:
+    user: ${admin.login:root-user}
+    password: ${admin.password:root-password}
+  service:
+    user: ${user.login:default-user}
+    password: ${user.password:default-password}

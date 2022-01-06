@@ -17,10 +17,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomAuthEntryPoint customAuthEntryPoint;
 
     @Value("${auth.root.user}")
-    private String user;
+    private String rootUser;
 
     @Value("${auth.root.password}")
-    private String password;
+    private String rootPassword;
+
+    @Value("${auth.service.user}")
+    private String serviceUser;
+
+    @Value("${auth.service.password}")
+    private String servicePassword;
 
 
     public SecurityConfig(CustomAuthEntryPoint customAuthEntryPoint) {
@@ -41,8 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-                .withUser(user)
-                .password(passwordEncoder.encode(password))
+                .withUser(rootUser)
+                .password(passwordEncoder.encode(rootPassword))
                 .roles("ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser(serviceUser)
+                .password(passwordEncoder.encode(servicePassword))
+                .roles("USER");
     }
 }
