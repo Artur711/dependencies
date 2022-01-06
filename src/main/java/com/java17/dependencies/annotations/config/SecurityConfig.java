@@ -1,5 +1,6 @@
 package com.java17.dependencies.annotations.config;
 
+import com.java17.dependencies.annotations.model.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -45,14 +46,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        setUserInAuthMemory(auth, new AppUser(rootUser, rootPassword,"ROLE_ADMIN"));
+        setUserInAuthMemory(auth, new AppUser(serviceUser, servicePassword,"ROLE_ADMIN"));
+    }
+
+    private void setUserInAuthMemory(AuthenticationManagerBuilder auth, AppUser appUser) throws Exception {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-                .withUser(rootUser)
-                .password(passwordEncoder.encode(rootPassword))
-                .roles("ADMIN");
-        auth.inMemoryAuthentication()
-                .withUser(serviceUser)
-                .password(passwordEncoder.encode(servicePassword))
-                .roles("USER");
+                .withUser(appUser.user())
+                .password(passwordEncoder.encode(appUser.password()))
+                .roles(appUser.role());
     }
 }
