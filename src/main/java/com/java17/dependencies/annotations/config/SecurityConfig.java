@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         setUserInAuthMemory(auth, new AppUser(rootUser, rootPassword,"ROLE_ADMIN"));
-        setUserInAuthMemory(auth, new AppUser(serviceUser, servicePassword,"ROLE_ADMIN"));
+        setUserInAuthMemory(auth, new AppUser(serviceUser, servicePassword,"ROLE_USER"));
     }
 
     private void setUserInAuthMemory(AuthenticationManagerBuilder auth, AppUser appUser) throws Exception {
