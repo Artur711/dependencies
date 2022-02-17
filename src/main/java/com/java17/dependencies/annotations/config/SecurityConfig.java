@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .httpBasic()
-                .authenticationEntryPoint(customAuthEntryPoint);
+                .authenticationEntryPoint(customAuthEntryPoint)
+                .and().cors();
     }
 
 
