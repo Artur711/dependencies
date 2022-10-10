@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.java17</groupId>
 	<artifactId>dependencies</artifactId>
-	<version>0.0.11</version>
+	<version>0.0.12</version>
 	<name>dependencies</name><description>Custom libraries</description>
 	<properties>
 		<java.version>17</java.version>
