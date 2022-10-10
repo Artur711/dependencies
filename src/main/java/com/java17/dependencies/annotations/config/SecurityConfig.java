@@ -38,11 +38,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and()
                 .csrf().disable()
@@ -54,14 +49,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername(serviceUser)
-                .password(bCryptPasswordEncoder.encode(servicePassword))
+                .password(passwordEncoder.encode(servicePassword))
                 .roles("USER")
                 .build());
         manager.createUser(User.withUsername(rootUser)
-                .password(bCryptPasswordEncoder.encode(rootPassword))
+                .password(passwordEncoder.encode(rootPassword))
                 .roles("USER", "ADMIN")
                 .build());
         return manager;
