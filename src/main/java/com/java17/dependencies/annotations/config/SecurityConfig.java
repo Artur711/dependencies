@@ -20,7 +20,6 @@ import static com.java17.dependencies.annotations.util.ROLE.ROLE_USER;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
-
     private final CustomAuthEntryPoint customAuthEntryPoint;
 
     @Value("${auth.root.user}")
@@ -53,7 +52,8 @@ public class SecurityConfig {
         http.csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
+//                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
+                .antMatchers(actuatorPath + "/**")
                 .hasAnyRole(ROLE_ADMIN.roleName())
                 .anyRequest().authenticated()
                 .and()
