@@ -3,8 +3,8 @@ auth:
     user: ${admin.login:root-user}
     password: ${admin.password:root-password}
   service:
-    user: ${user.login:default-user}
-    password: ${user.password:default-password}
+    user: ${user.login:user}
+    password: ${user.password:password}
 
 management:
   endpoints.web:
