@@ -18,6 +18,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
+    private final CustomAuthEntryPoint customAuthEntryPoint;
+
     @Value("${auth.root.user}")
     private String rootUser;
 
@@ -33,6 +35,11 @@ public class SecurityConfig {
     @Value("${management.endpoints.web.base-path}")
     private String actuatorPath;
 
+
+    public SecurityConfig(CustomAuthEntryPoint customAuthEntryPoint) {
+        this.customAuthEntryPoint = customAuthEntryPoint;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -47,7 +54,8 @@ public class SecurityConfig {
                 .hasAnyRole("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .authenticationEntryPoint(customAuthEntryPoint);
         return http.build();
     }
 
