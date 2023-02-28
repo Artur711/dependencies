@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.java17</groupId>
 	<artifactId>dependencies</artifactId>
-	<version>0.0.21</version>
+	<version>0.0.22</version>
 	<name>dependencies</name><description>Custom libraries</description>
 	<properties>
 		<java.version>17</java.version>
@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.12</version>
+			<version>1.6.14</version>
 		</dependency>
 	</dependencies>
 
