@@ -31,6 +31,9 @@ public class SecurityConfig {
     @Value("${auth.service.password}")
     private String servicePassword;
 
+    @Value("${management.endpoints.web.base-path}")
+    private String actuatorPath;
+
 
     public SecurityConfig(CustomAuthEntryPoint customAuthEntryPoint) {
         this.customAuthEntryPoint = customAuthEntryPoint;
@@ -38,9 +41,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and()
-                .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
+        http.csrf().disable()
+                .cors().and()
+                .authorizeRequests()
+                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
+                .hasAnyRole("ROLE_ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(customAuthEntryPoint);

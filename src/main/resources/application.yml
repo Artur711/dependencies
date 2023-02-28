@@ -5,3 +5,10 @@ auth:
   service:
     user: ${user.login:default-user}
     password: ${user.password:default-password}
+
+management:
+  endpoints.web:
+    exposure.include: health,info,env,beans,conditions
+    base-path: /app
+  endpoint:
+    health.show-details: always

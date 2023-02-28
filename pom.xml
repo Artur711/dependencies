@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.java17</groupId>
 	<artifactId>dependencies</artifactId>
-	<version>0.0.11</version>
+	<version>0.0.12</version>
 	<name>dependencies</name><description>Custom libraries</description>
 	<properties>
 		<java.version>17</java.version>
@@ -77,6 +77,18 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
+		</dependency>
+
+		<!--swagger-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!--health endpoints-->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.12</version>
 		</dependency>
 	</dependencies>
 
