@@ -13,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static com.java17.dependencies.annotations.util.ROLE.ROLE_ADMIN;
+import static com.java17.dependencies.annotations.util.ROLE.ROLE_USER;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -51,7 +54,7 @@ public class SecurityConfig {
                 .cors().and()
                 .authorizeRequests()
                 .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
-                .hasAnyRole("ROLE_ADMIN")
+                .hasAnyRole(ROLE_ADMIN.roleName())
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
@@ -64,11 +67,11 @@ public class SecurityConfig {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername(serviceUser)
                 .password(passwordEncoder.encode(servicePassword))
-                .roles("USER")
+                .roles(ROLE_USER.roleName())
                 .build());
         manager.createUser(User.withUsername(rootUser)
                 .password(passwordEncoder.encode(rootPassword))
-                .roles("USER", "ADMIN")
+                .roles(ROLE_USER.roleName(), ROLE_ADMIN.roleName())
                 .build());
         return manager;
     }
