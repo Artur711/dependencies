@@ -22,19 +22,19 @@ import static com.java17.dependencies.annotations.util.ROLE.ROLE_USER;
 public class SecurityConfig {
     private final CustomAuthEntryPoint customAuthEntryPoint;
 
-    @Value("${auth.root.user}")
+    @Value("${auth.root.user:root-user}")
     private String rootUser;
 
-    @Value("${auth.root.password}")
+    @Value("${auth.root.password:root-password}")
     private String rootPassword;
 
-    @Value("${auth.service.user}")
+    @Value("${auth.service.user:user}")
     private String serviceUser;
 
-    @Value("${auth.service.password}")
+    @Value("${auth.service.password:password}")
     private String servicePassword;
 
-    @Value("${management.endpoints.web.base-path}")
+    @Value("${management.endpoints.web.base-path:/app}")
     private String actuatorPath;
 
 
@@ -52,8 +52,7 @@ public class SecurityConfig {
         http.csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-//                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
-                .antMatchers(actuatorPath + "/**")
+                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
                 .hasAnyRole(ROLE_ADMIN.roleName())
                 .anyRequest().authenticated()
                 .and()
