@@ -21,11 +21,6 @@ import static com.java17.dependencies.annotations.util.ROLE.ROLE_USER;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
     private final CustomAuthEntryPoint customAuthEntryPoint;
-    private final static String ROOT_USER = "root-user";
-    private final static String ROOT_PASSWORD = "root-password";
-    private final static String SERVICE_USER = "user";
-    private final static String SERVICE_PASSWORD = "password";
-    private final static String ACTUATOR_PATH = "/app";
 
     @Value("${auth.root.user}")
     private String rootUser;
@@ -54,12 +49,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        String healthPath = actuatorPath.isBlank() ? ACTUATOR_PATH : actuatorPath;
         http.csrf().disable()
                 .cors().and()
                 .authorizeRequests()
 //                .antMatchers(actuatorPath + "/**", "/swagger-ui/**", "/v3/**")
-                .antMatchers(healthPath + "/**")
+                .antMatchers(actuatorPath + "/**")
                 .hasAnyRole(ROLE_ADMIN.roleName())
                 .anyRequest().authenticated()
                 .and()
@@ -71,12 +65,12 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername(serviceUser.isBlank() ? SERVICE_USER : serviceUser)
-                .password(passwordEncoder.encode(servicePassword.isBlank() ? SERVICE_PASSWORD : servicePassword))
+        manager.createUser(User.withUsername(serviceUser)
+                .password(passwordEncoder.encode(servicePassword))
                 .roles(ROLE_USER.roleName())
                 .build());
-        manager.createUser(User.withUsername(rootUser.isBlank() ? ROOT_USER : rootUser)
-                .password(passwordEncoder.encode(rootPassword.isBlank() ? ROOT_PASSWORD : rootPassword))
+        manager.createUser(User.withUsername(rootUser)
+                .password(passwordEncoder.encode(rootPassword))
                 .roles(ROLE_USER.roleName(), ROLE_ADMIN.roleName())
                 .build());
         return manager;
